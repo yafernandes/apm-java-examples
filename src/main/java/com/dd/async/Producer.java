@@ -15,10 +15,10 @@ import io.opentracing.util.GlobalTracer;
 
 public class Producer implements Runnable {
 
-	private final BlockingQueue<Job> queue;
+	private final BlockingQueue<JobWrapper> queue;
 	private final NormalDistribution nd = new NormalDistribution(70, 10);
 
-	public Producer(BlockingQueue<Job> queue) {
+	public Producer(BlockingQueue<JobWrapper> queue) {
 		this.queue = queue;
 	}
 
@@ -34,8 +34,8 @@ public class Producer implements Runnable {
 
 				try {
 					Thread.sleep((long) nd.sample());
-					Job job = new Job("msg");
-					job.setContext(context);
+					JobWrapper job = new JobWrapper("msg");
+					job.setHeaders(context);
 					queue.put(job);
 				} catch (InterruptedException e) {
 					e.printStackTrace();
