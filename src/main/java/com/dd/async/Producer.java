@@ -23,9 +23,8 @@ public class Producer implements Runnable {
 	}
 
 	public void run() {
-		for (int i = 0; i < 10; i++) {
+		for (int i = 0; i < 3; i++) {
 			Tracer tracer = GlobalTracer.get();
-			// Using ignoreActiveSpan just b/c of the loop situation. Otherwise
 			Span span = tracer.buildSpan("Produce job").start();
 			try (Scope scope = tracer.scopeManager().activate(span)) {
 				// Populates the context object with the current span context.

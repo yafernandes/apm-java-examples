@@ -1,7 +1,6 @@
 package com.dd.async;
 
 import java.util.concurrent.BlockingQueue;
-import java.util.concurrent.TimeUnit;
 
 import org.apache.commons.math3.distribution.NormalDistribution;
 
@@ -26,7 +25,7 @@ public class Consumer implements Runnable {
 	public void run() {
 		while (true) {
 			try {
-				JobWrapper job = queue.poll(3, TimeUnit.SECONDS);
+				JobWrapper job = queue.take();
 				if (job == null)
 					break;
 				Tracer tracer = GlobalTracer.get();
