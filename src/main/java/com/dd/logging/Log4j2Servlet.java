@@ -15,7 +15,7 @@ public class Log4j2Servlet extends HttpServlet {
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		new InstrLog4j2().doSomething();
 		resp.setContentType("text/plain");
-		resp.getWriter().print("Logging with log4j2");
+		resp.getWriter().println("Logging with log4j2");
 	}
 
 }

@@ -15,7 +15,7 @@ public class Slf4jServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		new InstrSlf4j().doSomething();
 		resp.setContentType("text/plain");
-		resp.getWriter().print("Logging with slf4j");
+		resp.getWriter().println("Logging with slf4j");
 	}
 
 }
