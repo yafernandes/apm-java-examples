@@ -33,4 +33,6 @@ dependencies {
 	implementation group: 'org.eclipse.jetty', name: 'jetty-servlet', version: '9.4.26.v20200117'
 
 	implementation group: 'org.apache.commons', name: 'commons-math3', version: '3.6.1'
+	
+	runtime files('src/resources')
 }
