@@ -30,9 +30,12 @@ dependencies {
 	implementation group: 'log4j', name: 'log4j', version: '1.2.17'
 	implementation group: 'net.logstash.log4j', name: 'jsonevent-layout', version: '1.7'   
 
+	runtime files('src/resources')
+
 	implementation group: 'org.eclipse.jetty', name: 'jetty-servlet', version: '9.4.26.v20200117'
 
 	implementation group: 'org.apache.commons', name: 'commons-math3', version: '3.6.1'
 	
-	runtime files('src/resources')
+	implementation group: 'org.apache.kafka', name: 'kafka-clients', version: '2.4.1'
+
 }
