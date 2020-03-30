@@ -1,4 +1,4 @@
-package com.dd.jetty;
+package com.dd.properties;
 
 import org.eclipse.jetty.server.Server;
 import org.eclipse.jetty.servlet.ServletHandler;

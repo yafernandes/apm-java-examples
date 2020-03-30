@@ -1,4 +1,4 @@
-package com.dd.jetty;
+package com.dd.properties;
 
 import java.io.IOException;
 import java.util.HashMap;
