@@ -1,6 +1,6 @@
 # Datado APM Java examples
 
-- [com.dd.async](src/main/java/com/dd/async) - Transfering tracing conetxt between worker threads.
+- [com.dd.async](src/main/java/com/dd/async) - Transfering tracing context between worker threads.
 
 - [com.dd.filters](src/main/java/com/dd/filters) - Using J2EE filters to update span properties based on the request.
 
