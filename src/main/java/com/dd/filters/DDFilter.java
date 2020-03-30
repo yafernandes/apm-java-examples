@@ -10,15 +10,13 @@ import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
 import javax.servlet.http.HttpServletRequest;
 
-import org.apache.commons.math3.distribution.NormalDistribution;
+import com.dd.Toolbox;
 
 import datadog.trace.api.interceptor.MutableSpan;
 import io.opentracing.Span;
 import io.opentracing.util.GlobalTracer;
 
 public class DDFilter implements Filter {
-
-	private NormalDistribution nd = new NormalDistribution(70, 15);
 
 	@Override
 	public void init(FilterConfig filterConfig) throws ServletException {
@@ -39,12 +37,8 @@ public class DDFilter implements Filter {
 				}
 			}
 		}
-		try {
-			Thread.sleep((long) nd.sample());
-			chain.doFilter(request, response);
-		} catch (InterruptedException e) {
-			e.printStackTrace();
-		}
+		Toolbox.sleep();
+		chain.doFilter(request, response);
 	}
 
 	@Override

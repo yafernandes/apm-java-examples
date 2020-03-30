@@ -2,7 +2,7 @@ package com.dd.async;
 
 import java.util.concurrent.BlockingQueue;
 
-import org.apache.commons.math3.distribution.NormalDistribution;
+import com.dd.Toolbox;
 
 import io.opentracing.Scope;
 import io.opentracing.Span;
@@ -15,7 +15,6 @@ import io.opentracing.util.GlobalTracer;
 public class Consumer implements Runnable {
 
 	private final BlockingQueue<JobWrapper> queue;
-	private final NormalDistribution nd = new NormalDistribution(70, 10);
 
 	public Consumer(BlockingQueue<JobWrapper> queue) {
 		this.queue = queue;
@@ -35,7 +34,7 @@ public class Consumer implements Runnable {
 				// Sets the parent parent context as the one received with the job.
 				Span span = GlobalTracer.get().buildSpan("Consume job").asChildOf(parentContext).start();
 				try (Scope scope = tracer.scopeManager().activate(span)) {
-					Thread.sleep((long) nd.sample());
+					Toolbox.sleep();
 					System.out.println(job.getJob());
 				} finally {
 					span.finish();

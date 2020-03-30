@@ -4,7 +4,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.concurrent.BlockingQueue;
 
-import org.apache.commons.math3.distribution.NormalDistribution;
+import com.dd.Toolbox;
 
 import io.opentracing.Scope;
 import io.opentracing.Span;
@@ -16,7 +16,6 @@ import io.opentracing.util.GlobalTracer;
 public class Producer implements Runnable {
 
 	private final BlockingQueue<JobWrapper> queue;
-	private final NormalDistribution nd = new NormalDistribution(70, 10);
 
 	public Producer(BlockingQueue<JobWrapper> queue) {
 		this.queue = queue;
@@ -32,7 +31,7 @@ public class Producer implements Runnable {
 				tracer.inject(span.context(), Format.Builtin.TEXT_MAP, new TextMapAdapter(context));
 
 				try {
-					Thread.sleep((long) nd.sample());
+					Toolbox.sleep();
 					JobWrapper job = new JobWrapper("msg");
 					job.setHeaders(context);
 					queue.put(job);

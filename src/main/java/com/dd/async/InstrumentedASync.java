@@ -9,7 +9,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.apache.commons.math3.distribution.NormalDistribution;
+import com.dd.Toolbox;
 
 import io.opentracing.Tracer;
 import io.opentracing.propagation.Format;
@@ -20,8 +20,6 @@ public class InstrumentedASync extends HttpServlet {
 
 	private static final long serialVersionUID = 1L;
 
-	private NormalDistribution nd = new NormalDistribution(70, 15);
-
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		// Populates the context object with the current span context.
@@ -30,7 +28,7 @@ public class InstrumentedASync extends HttpServlet {
 		tracer.inject(tracer.activeSpan().context(), Format.Builtin.TEXT_MAP, new TextMapAdapter(context));
 
 		try {
-			Thread.sleep((long) nd.sample());
+			Toolbox.sleep();
 			JobWrapper job = new JobWrapper("msg");
 			job.setHeaders(context);
 			Main.queue.put(job);
