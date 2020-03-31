@@ -23,6 +23,8 @@ repositories {
 
 shadowJar {
    baseName = 'apm-examples'
+   classifier = ''
+   archiveVersion = ''
 }
 
 dependencies {
