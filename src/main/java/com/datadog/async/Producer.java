@@ -1,10 +1,10 @@
-package com.dd.async;
+package com.datadog.async;
 
 import java.util.HashMap;
 import java.util.Map;
 import java.util.concurrent.BlockingQueue;
 
-import com.dd.Toolbox;
+import com.datadog.Toolbox;
 
 import io.opentracing.Scope;
 import io.opentracing.Span;

@@ -1,4 +1,4 @@
-package com.dd.async;
+package com.datadog.async;
 
 import java.io.IOException;
 import java.util.HashMap;
@@ -9,7 +9,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.dd.Toolbox;
+import com.datadog.Toolbox;
 
 import io.opentracing.Tracer;
 import io.opentracing.propagation.Format;

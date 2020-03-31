@@ -1,4 +1,4 @@
-package com.dd.filters;
+package com.datadog.filters;
 
 import java.io.IOException;
 
@@ -7,7 +7,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.dd.Toolbox;
+import com.datadog.Toolbox;
 
 public class DDServlet extends HttpServlet {
 

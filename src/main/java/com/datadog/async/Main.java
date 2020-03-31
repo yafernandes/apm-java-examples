@@ -1,4 +1,4 @@
-package com.dd.async;
+package com.datadog.async;
 
 import java.util.concurrent.ArrayBlockingQueue;
 import java.util.concurrent.BlockingQueue;
@@ -9,9 +9,12 @@ import org.eclipse.jetty.servlet.ServletHandler;
 public class Main {
 
 	public static BlockingQueue<JobWrapper> queue;
-
+	
 	public static void main(String[] args) throws Exception {
+		demo(8080);
+	}
 
+	public static void demo(int port) throws Exception {
 		queue = new ArrayBlockingQueue<JobWrapper>(10, true);
 		
 		Thread producer = new Thread(new Producer(queue));
@@ -20,7 +23,7 @@ public class Main {
 		consumer.start();
 		producer.start();
 
-		Server server = new Server(8081);
+		Server server = new Server(port);
 		ServletHandler handler = new ServletHandler();
 		server.setHandler(handler);
 		handler.addServletWithMapping(DefaultASync.class, "/default");
@@ -28,5 +31,4 @@ public class Main {
 		server.start();
 		server.join();
 	}
-
 }

@@ -1,4 +1,4 @@
-package com.dd.properties;
+package com.datadog.tags;
 
 import java.io.IOException;
 import java.util.HashMap;
@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.dd.Toolbox;
+import com.datadog.Toolbox;
 
 import datadog.trace.api.DDSpanTypes;
 import datadog.trace.api.DDTags;

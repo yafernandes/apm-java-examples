@@ -1,4 +1,4 @@
-package com.dd.filters;
+package com.datadog.filters;
 
 import java.io.IOException;
 
@@ -10,7 +10,7 @@ import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
 import javax.servlet.http.HttpServletRequest;
 
-import com.dd.Toolbox;
+import com.datadog.Toolbox;
 
 import datadog.trace.api.interceptor.MutableSpan;
 import io.opentracing.Span;

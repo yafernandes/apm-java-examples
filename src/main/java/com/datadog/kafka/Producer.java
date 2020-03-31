@@ -1,4 +1,4 @@
-package com.dd.kafka;
+package com.datadog.kafka;
 
 import java.util.Properties;
 
@@ -7,7 +7,7 @@ import org.apache.kafka.clients.producer.ProducerConfig;
 import org.apache.kafka.clients.producer.ProducerRecord;
 import org.apache.kafka.common.serialization.StringSerializer;
 
-import com.dd.Toolbox;
+import com.datadog.Toolbox;
 
 public class Producer implements Runnable {
 

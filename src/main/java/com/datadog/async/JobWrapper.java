@@ -1,4 +1,4 @@
-package com.dd.async;
+package com.datadog.async;
 
 import java.util.Map;
 

@@ -1,4 +1,4 @@
-package com.dd.kafka;
+package com.datadog.kafka;
 
 import java.time.Duration;
 import java.util.Arrays;
@@ -10,7 +10,7 @@ import org.apache.kafka.clients.consumer.ConsumerRecords;
 import org.apache.kafka.clients.consumer.KafkaConsumer;
 import org.apache.kafka.common.serialization.StringDeserializer;
 
-import com.dd.Toolbox;
+import com.datadog.Toolbox;
 
 public class Consumer implements Runnable {
 

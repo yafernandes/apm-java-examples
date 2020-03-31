@@ -1,8 +1,8 @@
-package com.dd.async;
+package com.datadog.async;
 
 import java.util.concurrent.BlockingQueue;
 
-import com.dd.Toolbox;
+import com.datadog.Toolbox;
 
 import io.opentracing.Scope;
 import io.opentracing.Span;
@@ -15,7 +15,7 @@ import io.opentracing.util.GlobalTracer;
 public class Consumer implements Runnable {
 
 	private final BlockingQueue<JobWrapper> queue;
-
+	
 	public Consumer(BlockingQueue<JobWrapper> queue) {
 		this.queue = queue;
 	}
@@ -35,7 +35,7 @@ public class Consumer implements Runnable {
 				Span span = GlobalTracer.get().buildSpan("Consume job").asChildOf(parentContext).start();
 				try (Scope scope = tracer.scopeManager().activate(span)) {
 					Toolbox.sleep();
-					System.out.println(job.getJob());
+					Toolbox.logger.info(job.getJob().toString());
 				} finally {
 					span.finish();
 				}
