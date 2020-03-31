@@ -11,13 +11,13 @@ public class APMExamples implements Callable<Integer>{
 	@Option(names = { "-d", "--demo" }, required = true, description = "Demo name")
 	public String demo;
 
-	@Option(names = { "-s", "--boostrap" }, description = "Bootstrap servers. Required for the Kafka demo.")
+	@Option(names = { "-s", "--boostrap" }, description = "Bootstrap servers", defaultValue = "localhost:9092")
 	public String bootstrapServers;
 
-	@Option(names = { "-p", "--port" }, description = "Jetty port", defaultValue = "8080", order = 3)
+	@Option(names = { "-p", "--port" }, description = "Jetty port", defaultValue = "8080")
 	public int port;
 
-	@Option(names = { "-h", "--help" }, usageHelp = true, description = "display a help message")
+	@Option(names = { "-h", "--help" }, usageHelp = true, description = "Display a help message")
 	private boolean helpRequested = false;
 
 	@Command(name = "APMExamples", description = "Multiple Java APM examples")
@@ -45,7 +45,7 @@ public class APMExamples implements Callable<Integer>{
 			com.datadog.tags.Main.demo(port);
 			break;
 		default:
-			System.err.println("Check https://github.com/yafernandes/apm-java-examples for possible values.");
+			System.err.println("Check https://github.com/yafernandes/apm-java-examples for possible demo values.");
 			break;
 		}
 		return 0;
