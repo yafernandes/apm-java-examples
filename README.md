@@ -52,7 +52,7 @@ If you want to run it locally, clone this repo and build using `gradle`.  The ac
 $ git clone https://github.com/yafernandes/apm-java-examples.git
 $ cd apm-java-examples
 $ gradle shadownJar
-java -javaagent:<dd-java-agent.jar> -jar build/libs/apm-examples.jar
+$ java -javaagent:<dd-java-agent.jar> -jar build/libs/apm-examples.jar
 Missing required option '--demo=<demo>'
 Usage: <main class> [-h] -d=<demo> [-p=<port>] [-s=<bootstrapServers>]
   -d, --demo=<demo>   Demo name
