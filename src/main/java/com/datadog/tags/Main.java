@@ -10,10 +10,10 @@ public class Main {
 	}
 
 	public static void demo(int port) throws Exception {
-		Server server = new Server(8081);
+		Server server = new Server(port);
 		ServletHandler handler = new ServletHandler();
 		server.setHandler(handler);
-		handler.addServletWithMapping(DDServlet.class, "/dd");
+		handler.addServletWithMapping(DDServlet.class, "/tags");
 		server.start();
 		server.join();
 	}

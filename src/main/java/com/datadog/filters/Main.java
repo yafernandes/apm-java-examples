@@ -20,8 +20,8 @@ public class Main {
         context.setContextPath("/");
         server.setHandler(context);
                 
-		context.addServlet(DDServlet.class, "/dd/*");
-		context.addFilter(DDFilter.class, "/dd/*", EnumSet.of(DispatcherType.REQUEST));
+		context.addServlet(DDServlet.class, "/filters/*");
+		context.addFilter(DDFilter.class, "/filters/*", EnumSet.of(DispatcherType.REQUEST));
 		
 		server.start();
 		server.join();
