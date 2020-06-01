@@ -31,7 +31,7 @@ public class Consumer implements Runnable {
 				SpanContext parentContext = tracer.extract(Format.Builtin.TEXT_MAP,
 						new TextMapAdapter(job.getHeaders()));
 
-				// Sets the parent context as the one received with the job.
+				// Sets the parent parent context as the one received with the job.
 				Span span = GlobalTracer.get().buildSpan("Consume job").asChildOf(parentContext).start();
 				try (Scope scope = tracer.scopeManager().activate(span)) {
 					Toolbox.sleep();

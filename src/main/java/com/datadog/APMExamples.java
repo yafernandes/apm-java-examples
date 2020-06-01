@@ -44,9 +44,6 @@ public class APMExamples implements Callable<Integer>{
 		case "tags":
 			com.datadog.tags.Main.demo(port);
 			break;
-		case "interceptor":
-			com.datadog.interceptor.Main.demo(port);
-			break;
 		default:
 			System.err.println("Check https://github.com/yafernandes/apm-java-examples for possible demo values.");
 			break;
