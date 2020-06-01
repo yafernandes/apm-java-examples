@@ -1,0 +1,208 @@
+<configuration>
+
+    <conversionRule conversionWord="coloredLevel" converterClass="play.api.Logger$ColoredLevel" />
+
+    <appender name="ONEVIEW_API" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>${application.home}/logs/oneview_apis.log</file>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <!-- Daily rollover with compression -->
+            <fileNamePattern>oneview_apis-log-%d{yyyy-MM-dd}.gz</fileNamePattern>
+            <!-- keep 30 days worth of history -->
+            <maxHistory>30</maxHistory>
+        </rollingPolicy>
+        <encoder>
+            <!--encoder class="ch.qos.logback.core.encoder.LayoutWrappingEncoder">
+                <layout class="com.rogers.ute.logging.SensitiveDataMaskingLayout"-->
+            <!-- make sure any change in logging format will not break grok pattern in Logstash.conf -->
+            <pattern>%date{yyyy-MM-dd} - %X{dd.trace_id:-0} %X{dd.span_id:-0} -  %message %n</pattern>
+            <!--/layout-->
+        </encoder>
+    </appender>
+
+
+    <!--
+        <appender name="FILE" class="ch.qos.logback.core.FileAppender">
+            <file>${application.home}/logs/application.log</file>
+            <encoder>
+                <pattern>%date - [%level] - from %logger in %thread - %X{dd.trace_id:-0} %X{dd.span_id:-0} -  %n%message%n%xException%n</pattern>
+            </encoder>
+        </appender>
+    -->
+    <appender name="FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>${application.home}/logs/application.log</file>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <!-- Daily rollover with compression -->
+            <fileNamePattern>application-log-%d{yyyy-MM-dd}.gz</fileNamePattern>
+            <!-- keep 30 days worth of history -->
+            <maxHistory>30</maxHistory>
+        </rollingPolicy>
+        <encoder class="ch.qos.logback.core.encoder.LayoutWrappingEncoder">
+<!--             <layout class="com.rogers.ute.logging.SensitiveDataMaskingLayout">
+                <pattern>%date{yyyy-MM-dd HH:mm:ss.SSSZZZZ} - [%level] - %logger %thread - %X{dd.trace_id:-0} %X{dd.span_id:-0} - %message %xException%n</pattern>
+            </layout>
+ -->            
+                <pattern>%date{yyyy-MM-dd HH:mm:ss.SSSZZZZ} - [%level] - %logger %thread - %X{dd.trace_id:-0} %X{dd.span_id:-0} - %message %xException%n</pattern>
+        </encoder>
+    </appender>
+
+    <appender name="MONITORLOG" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>${application.home}/logs/monitor.log</file>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <!-- Daily rollover with compression -->
+            <fileNamePattern>monitor-log-%d{yyyy-MM-dd}.gz</fileNamePattern>
+            <!-- keep 30 days worth of history -->
+            <maxHistory>30</maxHistory>
+        </rollingPolicy>
+        <encoder>
+            <pattern>%date{yyyy-MM-dd HH:mm:ssZZZZ} - [%level] - %logger %thread - %X{dd.trace_id:-0} %X{dd.span_id:-0} - %message %xException%n</pattern>
+        </encoder>
+    </appender>
+
+    <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <!--encoder class="ch.qos.logback.core.encoder.LayoutWrappingEncoder">
+                <layout class="com.rogers.ute.logging.SensitiveDataMaskingLayout"-->
+            <pattern>%d{HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %X{dd.trace_id:-0} %X{dd.span_id:-0}  - FOO - %msg%n</pattern>
+            <!--/layout-->
+        </encoder>
+    </appender>
+
+    <appender name="REPORTING" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>${application.home}/logs/Reporting.log</file>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <!-- Daily rollover with compression -->
+            <fileNamePattern>application-log-%d{yyyy-MM-dd}.gz</fileNamePattern>
+            <!-- keep 30 days worth of history -->
+            <maxHistory>30</maxHistory>
+        </rollingPolicy>
+        <encoder>
+            <pattern>%date{yyyy-MM-dd HH:mm:ssZZZZ}, - %X{dd.trace_id:-0} %X{dd.span_id:-0} - %message%n</pattern>
+        </encoder>
+    </appender>
+
+
+    <appender name="DMTLOGGEROUT" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>${application.home}/logs/ROGDMT_WLOG.log</file>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <!-- Daily rollover with compression -->
+            <fileNamePattern>ROGDMT_WLOG-%d{yyyy-MM-dd}.gz</fileNamePattern>
+            <!-- keep 30 days worth of history -->
+            <maxHistory>1</maxHistory>
+        </rollingPolicy>
+        <encoder>
+            <pattern>- TRACEID[%X{dd.trace_id:-0}] SPAN[%X{dd.span_id:-0}] - DD - %message%n</pattern>
+        </encoder>
+    </appender>
+
+    <appender name="DMT_INFO_LOGGEROUT" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>${application.home}/logs/ROGDMT_INFO_WLOG.log</file>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <!-- Daily rollover with compression -->
+            <fileNamePattern>ROGDMT_INFO_WLOG-%d{yyyy-MM-dd}.gz</fileNamePattern>
+            <!-- keep 30 days worth of history -->
+            <maxHistory>1</maxHistory>
+        </rollingPolicy>
+        <encoder>
+            <pattern>%d{HH:mm:ss.SSS} - %X{dd.trace_id:-0} %X{dd.span_id:-0}  - %msg%n</pattern>
+        </encoder>
+    </appender>
+    <appender name="RESPONSE-TIME" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>${application.home}/logs/response_time.log</file>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <!-- Hourly rollover -->
+            <!--fileNamePattern>application-log-%d{yyyy-MM-dd_HH}.gz</fileNamePattern-->
+            <fileNamePattern>${application.home}/logs/response_time.log-%d{yyyy-MM-dd_HH}.txt</fileNamePattern>
+            <!-- keep 30 days worth of history -->
+            <maxHistory>30</maxHistory>
+        </rollingPolicy>
+        <encoder>
+            <pattern>%date{yyyy-MM-dd HH:mm:ss.SSSZZZZ} - [%level] - %logger - %X{dd.trace_id:-0} %X{dd.span_id:-0} - %message%n</pattern>
+        </encoder>
+    </appender>
+    <logger name="REST_API" level="INFO" additivity="false">
+        <appender-ref ref="RESPONSE-TIME" />
+    </logger>
+    <logger name="RESP_API" level="INFO" additivity="false">
+        <appender-ref ref="RESPONSE-TIME" />
+    </logger>
+    <logger name="UCS_API" level="INFO" additivity="false">
+        <appender-ref ref="RESPONSE-TIME" />
+    </logger>
+    <logger name="JANRAIN_API" level="INFO" additivity="false">
+        <appender-ref ref="RESPONSE-TIME" />
+    </logger>
+
+
+    <logger name="play" level="INFO" />
+    <logger name="application" level="INFO" />
+    <logger name="com.jolbox.bonecp" level="INFO" />
+    <logger name="com.microsoft.sqlserver.jdbc" level="INFO" />
+    <logger name="akka" level="INFO" />
+
+    <!-- Monitoring Logs -->
+    <logger name="com.codahale.metrics" level="INFO" additivity="false">
+        <appender-ref ref="STDOUT" />
+        <appender-ref ref="MONITORLOG" />
+    </logger>
+    <logger name="javax.management" level="INFO" additivity="false">
+        <appender-ref ref="STDOUT" />
+        <appender-ref ref="MONITORLOG" />
+    </logger>
+    <logger name="com.rogers.totes.monitor" level="INFO" additivity="false">
+        <appender-ref ref="STDOUT" />
+        <appender-ref ref="MONITORLOG" />
+    </logger>
+    <logger name="com.rogers.vowifi.reporter" level="INFO" additivity="false">
+        <appender-ref ref="STDOUT" />
+        <appender-ref ref="REPORTING" />
+    </logger>
+
+    <logger name="com.rogers.vowifi.reporter" level="INFO" />
+    <logger name="org" level="INFO" />
+    <logger name="com.datastax.driver.core.Connection" level="INFO" />
+    <logger name="com.datastax.driver.core.Session" level="INFO" />
+    <logger name="com.ning.http.client" level="INFO" />
+    <logger name="com.sun.xml" level="INFO" />
+    <logger name="javax.xml.bind" level="INFO" />
+    <logger name="sun.net" level="INFO" />
+    <logger name="sun.rmi" level="INFO" />
+    <logger name="com.wordnik.swagger" level="INFO" />
+    <logger name="swagger" level="INFO" />
+
+    <logger name="com.rogers.totes.actor.UsageDetailsForWirelessActor" level="WARN" />
+
+    <logger name="com.rogers.totes.actor.SkuHupOffersActor" level="DEBUG" />
+
+    <logger name="controllers.interceptors.DMTLoggedAction" level="INFO">
+        <appender-ref ref="STDOUT" />
+        <appender-ref ref="DMTLOGGEROUT" />
+    </logger>
+    <logger name="controllers.interceptors.DMTUnProtectedLoggedAction" level="INFO">
+        <appender-ref ref="STDOUT" />
+        <appender-ref ref="DMTLOGGEROUT" />
+    </logger>
+    <logger name="play.mvc.Action" level="DEBUG">
+        <appender-ref ref="DMT_INFO_LOGGEROUT" />
+    </logger>
+    <logger name="org.asynchttpclient">
+        <level value="ERROR" />
+    </logger>
+    <logger name="com.rogers.totes.account.payment" level="DEBUG">
+        <appender-ref ref="STDOUT" />
+        <appender-ref ref="DMT_INFO_LOGGEROUT" />
+    </logger>
+    <logger name="ONEVIEW_API" level="INFO">
+        <appender-ref ref="ONEVIEW_API" />
+    </logger>
+    <logger name="com.datastax.driver.core.QueryLogger.NORMAL">
+        <level value="TRACE" />
+    </logger>
+    <!-- Set a specific actor to INFO -->
+    <!--logger name="actors.MyActor" level="INFO" /-->
+
+    <root level="DEBUG">
+        <appender-ref ref="STDOUT" />
+        <appender-ref ref="FILE" />
+    </root>
+
+</configuration>

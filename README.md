@@ -13,6 +13,8 @@ Two servelts are also made available to illustrate the differences between with 
 ### J2EE Filters - `com.datadog.filters`
 In some cases, you want to augument the default servlet instrumenation with extra tags extracted from the HTTP request.  [J2EE filters](https://www.oracle.com/technetwork/java/filters-137243.html) are a convinient way of achiving it from a central place. On this example, we set the span operation name from the HTTP header `operation` when it exists.
 
+If the goal is to create tags from headers, you can use `DD_TRACE_HEADER_TAGS`.
+
 ---
 
 ### kafka - `com.datadog.kafka`
@@ -52,12 +54,5 @@ If you want to run it locally, clone this repo and build using `gradle`.  The ac
 $ git clone https://github.com/yafernandes/apm-java-examples.git
 $ cd apm-java-examples
 $ gradle shadownJar
-$ java -javaagent:<dd-java-agent.jar> -jar build/libs/apm-examples.jar
-Missing required option '--demo=<demo>'
-Usage: <main class> [-h] -d=<demo> [-p=<port>] [-s=<bootstrapServers>]
-  -d, --demo=<demo>   Demo name
-  -h, --help          Display a help message
-  -p, --port=<port>   Jetty port
-  -s, --boostrap=<bootstrapServers>
-                      Bootstrap servers
+$ java -javaagent:<dd-java-agent.jar> -jar build/libs/apm-examples.jar --demo=async
 ```
